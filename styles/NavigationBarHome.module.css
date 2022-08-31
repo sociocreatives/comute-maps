@@ -1,0 +1,92 @@
+
+
+.body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+}
+
+.logo{
+    cursor: pointer;
+}
+.list{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.btn{
+    cursor: pointer;
+    padding: .5rem 2rem;
+    border: none;
+    background-color: #002B5B;
+    align-items: center;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    border-radius: 5rem;
+}
+
+.btnso{
+    cursor: pointer;
+    border: none;
+    background-color: #002B5B;
+    align-items: center;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.userprofile{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+}
+
+.picha{
+    border-radius: 50%;
+    border: #002B5B solid 2px;
+}
+
+.gicon{
+    margin-right: .5rem;
+}
+
+.logoimage{
+    border-radius: 50%;
+}
+
+.btnhome{
+    font-size: 2rem;
+    color: white;
+}
+
+.Container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logi{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+}
+
+.btnicon{
+    background-color: #002B5B;
+    color: #fff;
+    border-radius: 50%;
+    padding: .85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+}

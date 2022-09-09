@@ -3,7 +3,7 @@ import { HiOutlineLogout } from 'react-icons/hi';
 import Link from 'next/link';
 import { MdMyLocation } from 'react-icons/md'
 import styles from "../../styles/MapLayout.module.css"
-import { GoogleMap, useLoadScript, InfoWindow, Marker, Autocomplete, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, InfoWindow, Marker, Autocomplete, DirectionsRenderer, useJsApiLoader } from '@react-google-maps/api';
 import NavigationBarHome from '../NavigationBarHome/NavigationBarHome';
 import "animate.css/animate.min.css";
 import { formatRelative } from "date-fns";
@@ -209,14 +209,15 @@ const mapStyles =
 
 const libraries = ["places"]
 
+const center = {
+    lat: -1.2513089521180247, 
+    lng: 36.83173646599425
+}
 const mapContainerStyles = {
     width: "100vw",
     height: "100vh",
 }
-const center = {
-    lat: -4.334004246702967, 
-    lng: 15.299163778489355
-}
+
 const options ={
     styles: mapStyles,
     disableDefaultUI: true,
@@ -224,14 +225,31 @@ const options ={
     geolocation: true,
 }
 
-
 const MapLayout = () => {
+
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: "AIzaSyCnSALS_W4_pClAPF1bWYIDBhIe7G-82WY",
         libraries
     });
 
-    const [map, setMap] = useState(/** @type google.maps.Map */ (null))
+    const [map, setMap] = useState((null))
+    const onLoad = React.useCallback(function callback(map) {
+        const transitLayer = new window.google.maps.TransitLayer();
+        const bikeLayer = new window.google.maps.BicyclingLayer();
+        const bounds = new window.google.maps.LatLngBounds(center);
+        const trafficLayer = new window.google.maps.TrafficLayer();
+        map.fitBounds(bounds);
+        trafficLayer.setMap(map);
+        transitLayer.setMap(map);
+        bikeLayer.setMap(map);
+        setMap(map)
+      }, [])
+
+    const onUnmount = React.useCallback(function callback(map) {
+        setMap(null)
+      }, [])
+    
+
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
@@ -256,10 +274,19 @@ const MapLayout = () => {
         },
         ]);
     }, []);
+    
 
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
         mapRef.current = map;
+
+        const transitLayer = new window.google.maps.TransitLayer();
+        const bikeLayer = new window.google.maps.BicyclingLayer();
+        const trafficLayer = new window.google.maps.TrafficLayer();
+        trafficLayer.setMap(map);
+        transitLayer.setMap(map);
+        bikeLayer.setMap(map);
+        setMap(map)
     }, []);
 
     const panTo = React.useCallback(({ lat, lng }) => {
@@ -275,16 +302,11 @@ const MapLayout = () => {
             return
         }
             const directionsService = new google.maps.DirectionsService()
-            const routePath = new google.maps.Polyline({
-                geodesic: true,
-                strokeColor: "#FF0000",
-                strokeOpacity: 1.0,
-                strokeWeight: 2,
-            })
             const results = await directionsService.route({
                 origin: originRef.current.value,
                 destination: destinationRef.current.value,
                 travelMode: google.maps.TravelMode.DRIVING,
+
             })
             setDirectionsResponse(results)
             setDistance(results.routes[0].legs[0].distance.text)
@@ -305,16 +327,18 @@ const MapLayout = () => {
         <NavigationBarHome/>
         <div className={styles.header}>
         <h3>Driving Routes</h3>
-        <MdMyLocation className={styles.mylocation} panTo={panTo} /></div>
+       <Locate panTo={panTo} className={styles.mylocation}/></div>
         <div> 
             <Autocomplete><input type="text" placeholder='Select Starting Point' className={styles.input} ref={originRef}/></Autocomplete>
             <Autocomplete><input type="text" placeholder='Select Destination' className={styles.input} ref={destinationRef}/></Autocomplete>
             <button className={styles.buttons} onClick={calculateRoute}>Find Route</button>
         </div>
+
         
         <div className={styles.result}>
-        <h4>{distance}</h4>|<h4>{duration}</h4>
-        </div>
+         <h4>{distance}</h4>|<h4>{duration}</h4> 
+        </div> 
+        
 
         <div className={styles.bottommenu}><Link href="/about">|| About Us </Link></div>
     </div>
@@ -322,28 +346,16 @@ const MapLayout = () => {
 
     <GoogleMap 
         mapContainerStyle={mapContainerStyles} 
-        zoom={14} 
+        zoom={10} 
         center={center}
         options={options}
         onLoad={onMapLoad}
-        onClick={onMapClick}
+        onUnmount={onUnmount}
         >
 
-        {markers.map((marker) => (
-            <Marker
-              key={`${marker.lat}-${marker.lng}`}
-              position={{ lat: marker.lat, lng: marker.lng }}
-              onClick={() => {
-                setSelected(marker);
-              }}
-              icon={{
-                url: '/car.png',
-                origin: new window.google.maps.Point(0, 0),
-                anchor: new window.google.maps.Point(15, 15),
-                scaledSize: new window.google.maps.Size(40, 60),
-              }}
-            />
-          ))}
+
+        <Marker/>
+
 
           {directionsResponse && (
             <DirectionsRenderer 
@@ -382,8 +394,8 @@ export default MapLayout
 
 function Locate({ panTo }) {
     return (
-      <button
-        className="locate"
+      <div
+      className={styles.mylocation}
         onClick={() => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -396,9 +408,20 @@ function Locate({ panTo }) {
           );
         }}
       >
-       <HiOutlineLogout/>
-      </button>
+       <MdMyLocation/>
+      </div>
     );
   }
 
+//   function initMap() {
+//     const map = new google.maps.Map(document.getElementById("map"), {
+//       zoom: 13,
+//       center: { lat: 34.04924594193164, lng: -118.24104309082031 },
+//     });
+//     const trafficLayer = new google.maps.TrafficLayer();
+  
+//     trafficLayer.setMap(map);
+//   }
+  
+// initMap = initMap;
   

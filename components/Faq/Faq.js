@@ -3,10 +3,8 @@ import { Data } from "./Data";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import styles from "../../styles/Faq.module.css"
 
-
 function Faq() {
   const [clicked, setClicked] = useState(false);
-
   const toggle = index => {
     if (clicked === index) {
       return setClicked(null);

@@ -1,31 +1,28 @@
 
 .container{
+    position: absolute;
     height: 100vh;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('../public/loginbg.png');
-    background-position: bottom;
-    background-size: cover;
+    /* background-image: url('../public/loginbg.png'); */
+    /* background-position: bottom;
+    background-size: cover; */
 }
 
-.main{
-    /* border: 1px solid black; */
-    border-radius: 1rem;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
+.navigation{
+    height: 9vh;
+    width: 100%;
 }
 
-.main p{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    color: #256D85;
-    margin-top: .95rem;
+.map{
+    height: 85vh;
+    width: 100%;
+}
+
+.footerMain{
+    height: 6vh;
+    width: 100%;
+    background-color: #256D85;
+    position: absolute;
 }
 
 .login{

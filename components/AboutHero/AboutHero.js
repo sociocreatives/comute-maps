@@ -4,10 +4,12 @@ import Image from 'next/image'
 import Logo from '../../public/SVG/whitelogo.svg'
 import Traffic from '../../public/SVG/traffic-police.svg'
 import Google from '../../public/google.png'
+import axios from 'axios'
 
 
 
-const AboutHero = () => {
+function AboutHero() {
+ 
   return (
     <div className={styles.container}>
       <div className={styles.mainhead}>
@@ -30,6 +32,8 @@ const AboutHero = () => {
         </div>
       </div>
 
+      
+
     <div className={styles.comute}>
         <div className={styles.tlights}></div>
         <div className={styles.mapping}><h2>Commit yourself to comute as a solo comuter or a jocomuter and enjoy your anxious free commuting while listining to your favorite country music or gospel song from your preferred artist and let your visitor finds </h2>
@@ -40,11 +44,12 @@ const AboutHero = () => {
           className={styles.google}/>
         </div>
         </div>
+    </div>            
     </div>
-       
-                
-         </div>
   )
 }
 
 export default AboutHero
+
+
+

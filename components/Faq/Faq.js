@@ -3,7 +3,16 @@ import { Data } from "./Data";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import styles from "../../styles/Faq.module.css"
 
-function Faq() {
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://comuteapi.herokuapp.com/faq/`)
+  const data = await res.json()
+
+  // Pass data to the page via props
+  return { props: { data } }
+}
+
+function Faq({ data }) {
   const [clicked, setClicked] = useState(false);
   const toggle = index => {
     if (clicked === index) {
@@ -36,3 +45,6 @@ function Faq() {
 }
 
 export default Faq;
+
+
+

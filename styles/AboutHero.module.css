@@ -165,3 +165,41 @@
         margin-top: 1rem;
     }
 }
+
+.main{
+    margin: auto 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.aboutheading{
+    font-size: 2.75rem;
+    line-height: 2.8rem;
+    font-weight: 800;
+    color: #002B5B;
+    padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 960px){
+    .aboutheading{
+        font-size: 1.5rem;
+        line-height: 1.8rem;
+        font-weight: 800;
+        color: #002B5B;
+        padding-bottom: 2rem;
+    }
+    
+}
+
+.middle{
+    background-image: url('https://cdn.pixabay.com/photo/2020/04/28/18/10/bible-5105707_1280.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    margin: auto 2rem;
+    border-radius: 1rem;
+}

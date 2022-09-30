@@ -1,12 +1,14 @@
 import React, { useState, useRef } from 'react'
-import { HiOutlineLogout } from 'react-icons/hi';
+// import { HiOutlineLogout } from 'react-icons/hi';
 import Link from 'next/link';
 import { MdMyLocation } from 'react-icons/md'
 import styles from "../../styles/MapLayout.module.css"
-import { GoogleMap, useLoadScript, InfoWindow, Marker, Autocomplete, DirectionsRenderer, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, InfoWindow, Marker, Autocomplete, DirectionsRenderer, useJsApiLoader, Polyline } from '@react-google-maps/api';
 import NavigationBarHome from '../NavigationBarHome/NavigationBarHome';
 import "animate.css/animate.min.css";
 import { formatRelative } from "date-fns";
+
+
 
 const mapStyles = 
     [
@@ -226,7 +228,6 @@ const options ={
 }
 
 const MapLayout = () => {
-
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: "AIzaSyCnSALS_W4_pClAPF1bWYIDBhIe7G-82WY",
         libraries
@@ -306,12 +307,18 @@ const MapLayout = () => {
                 origin: originRef.current.value,
                 destination: destinationRef.current.value,
                 travelMode: google.maps.TravelMode.DRIVING,
+                // polyline: google.maps.Polyline(),
 
             })
             setDirectionsResponse(results)
             setDistance(results.routes[0].legs[0].distance.text)
             setDuration(results.routes[0].legs[0].duration.text)
+            // setPath(results.routes[0].overview_path)
         }
+        
+
+        // const polyline = new google.maps.Polyline(result);
+        // polyline.setMap(map)
 
         function clearRoute(){
             setDirectionsResponse(null)
@@ -324,7 +331,6 @@ const MapLayout = () => {
   return (
     <div>
     <div className={styles.bigbox} animateIn="animate__pulse" >
-        <NavigationBarHome/>
         <div className={styles.header}>
         <h3>Driving Routes</h3>
        <Locate panTo={panTo} className={styles.mylocation}/></div>
@@ -390,6 +396,7 @@ const MapLayout = () => {
 }
 
 export default MapLayout
+
 
 
 function Locate({ panTo }) {

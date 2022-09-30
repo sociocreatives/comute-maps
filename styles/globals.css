@@ -37,3 +37,109 @@ ul{
   border-radius: 5rem;
   margin-top: 3rem;
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+  background-color: #256D85;
+  height: 3rem;
+}
+
+.footerContainer{
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 40px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: .8rem;
+    cursor: pointer;
+    background-color: #256D85;
+}
+
+@media screen and (max-width: 960px){
+  .footerContainer{
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 40px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: .8rem;
+    cursor: pointer;
+    background-color: #256D85;
+}
+}
+
+.footerMain{
+  background-color: #256D85;
+  width: 100%;
+  padding: 1rem 0rem 1rem 0rem;
+}
+
+.downloads{
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: auto 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: #002B5B;
+  padding: 3rem 3rem;
+  border-radius: 1rem;
+}
+
+@media screen and (max-width: 960px){
+  .downloads{
+    display: flex;
+    flex-direction: column;
+    font-weight: 200;
+    font-size: 1.5rem;
+    margin: 1rem;
+    align-items: center;
+    justify-content: center;
+  }  
+}
+
+.partnersMain{
+  margin: auto 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 960px){
+  .partnersMain{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+    
+}
+
+.main{
+  padding: 3rem 2rem;
+  background-color: lightgrey;
+  border-radius: 1rem;
+  width: 100%;
+}

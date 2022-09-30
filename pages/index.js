@@ -1,21 +1,22 @@
+import Footer from '../components/Footer';
 import MapLayout from '../components/MapLayout/MapLayout';
+import NavigationBar from '../components/NavigationBar/NavigationBar';
+import styles from "../styles/Home.module.css"
 
 export default function Home() {
-  console.log('data',)
   return (
-    <div>
+    <div className={styles.container}>
+      <div className={styles.navigation}>
+        <NavigationBar/>
+      </div>
+      <div className={styles.map}>
         <MapLayout/>
+      </div>
+      <div className={styles.footerMain}>
+      <Footer/>
+      </div>
     </div>
   )
 }
 
-// const defaultEndpoint = 'https://comute2.herokuapp.com/api/faq/';
-// export async function getServerSideProps() {
-//   const res = await fetch(defaultEndpoint);
-//   const data = await res.json;
-//   return {
-//     props: {
-//       data
-//     }
-//   }
-// }
+

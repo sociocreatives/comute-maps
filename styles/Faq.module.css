@@ -25,30 +25,36 @@
   }
 
 .Header{
-  color: #256D85;
+  background-color: #256D85;
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
   text-align: center;
   justify-content: space-between;
-  padding: 1rem;
-  font-weight: 800;
-  font-size: 2rem;
+  padding: 7rem 1rem;
+  font-weight: 200;
+  font-size: 3rem;
   margin: 2rem;
   font-family: 'Poppins', sans-serif;
+  border-radius: 1rem;
+  background-image: url('../public/ssd@4x.png');
+  background-position: bottom;
+  background-size: cover;
 }
+
 @media screen and (max-width: 960px){
   .Header{
-    color: #256D85;
+    color: #fff;
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: center;
     text-align: center;
     justify-content: space-between;
-    font-weight: 800;
-    font-size: 1rem;
+    font-weight: 200;
+    font-size: 1.5rem;
     margin: 1rem;
     font-family: 'Poppins', sans-serif;
   }
@@ -56,6 +62,16 @@
 
 .AccordionSection {
     background-color: transparent;
+    margin: auto 10rem;
+    margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 960px){
+  .AccordionSection {
+    background-color: transparent;
+    margin: auto 2rem;
+    margin-bottom: 3rem;
+}
 }
 
 .Wrap{

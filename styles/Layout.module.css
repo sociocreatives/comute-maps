@@ -1,0 +1,92 @@
+
+.Container{
+  margin-top: 4rem;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 4rem 20%;
+  justify-content: center;
+  align-items: bottom;
+  background-color: #256D85;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(rgba(37, 109, 133, 0.25), rgba(37, 109, 133, 0.25));
+}
+
+  @media screen and (max-width: 960px){
+    .Container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    text-align: left;
+    justify-content: center;
+    padding: 0 24px;
+    }
+  }
+
+.Header{
+  color: #256D85;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  padding: 1rem;
+  font-weight: 800;
+  font-size: 2rem;
+  margin: 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+@media screen and (max-width: 960px){
+  .Header{
+    color: #256D85;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    font-weight: 800;
+    font-size: 1rem;
+    margin: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+.AccordionSection {
+    background-color: transparent;
+}
+
+.Wrap{
+  transition: ease-in-out all .2s;
+  background: #002B5B;
+  padding: 1rem;
+  color: white;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-radius: 5px 5px 0px 0px;
+  margin-bottom: .5rem;
+}
+  .Wrap:hover {
+    background: #256D85;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+  }
+
+
+.Dropdown{
+  font-family: 'Poppins', sans-serif;
+  color: #002B5B;
+  padding: 2rem;
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 1.5rem;
+  background: #fff;
+  transition: all 1s ease-out;
+  margin-bottom: 1rem;
+  margin-top: -0.5rem;
+}

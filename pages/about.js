@@ -1,7 +1,4 @@
-import React, {useState} from 'react'
-import { FiPlus, FiMinus } from "react-icons/fi";
-import AboutHero from '../components/AboutHero/AboutHero';
-// import styles from "../styles/Faq.module.css"
+import React from 'react'
 import styles from "../styles/AboutHero.module.css"
 import NavigationBar from '../components/NavigationBar/NavigationBar';
 import Footer from '../components/Footer';

@@ -1,11 +1,9 @@
 import React from 'react'
-// import styles from "../styles/Partners.module.css"
 import NavigationBar from '../components/NavigationBar/NavigationBar'
 import 'firebase/firestore'
 import Footer from '../components/Footer'
 import Download from '../components/Download'
 import styles from "../styles/Faq.module.css"
-import Image from 'next/image'
 
 export const getStaticProps = async () => {
   const response = await fetch('https://comuteapi.herokuapp.com/partners/');
